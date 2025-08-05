@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Information - Iberostar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('hotel-background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(126, 182, 178, 0.7);
+            z-index: -1;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .iberostar-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7eb6b2 0%, #5a9a96 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .restaurant-image {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .restaurant-image:hover {
+            transform: scale(1.02);
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            min-width: 250px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3f73 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1e3f73 0%, #2c5aa0 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(44, 90, 160, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #7eb6b2 0%, #5a9a96 100%);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #5a9a96 0%, #7eb6b2 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(126, 182, 178, 0.4);
+        }
+
+        .btn-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            background: #5a9a96;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        /* Touch-friendly adjustments */
+        @media (max-width: 768px) {
+            .iberostar-logo {
+                max-width: 250px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 350px;
+                padding: 25px 30px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* High contrast mode for accessibility */
+        @media (prefers-contrast: high) {
+            .container {
+                background: white;
+                border: 3px solid #000;
+            }
+
+            .btn {
+                border: 2px solid #000;
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="iberostar-logo.png" alt="Iberostar Logo" class="iberostar-logo">
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>IBEROSTAR Guest Services</h1>
+            <p>Welcome to your vacation experience • Bienvenido a tu experiencia vacacional</p>
+        </div>
+        
+        <div class="content">
+            <div class="buttons-container">
+                <a href="#" class="btn btn-primary" id="pdfLink" target="_blank">
+                    <span class="btn-icon">🍽️</span>
+                    Reserve a different restaurant • Reserva un restaurante diferente
+                </a>
+                
+                <a href="https://directory.iberostar.com/?Hotel=05&lang=es" class="btn btn-secondary" target="_blank">
+                    <span class="btn-icon">ℹ️</span>
+                    Hotel Information • Información del Hotel
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Touch the buttons above to access services • Toque los botones para acceder a los servicios</p>
+        </div>
+    </div>
+
+    <script>
+        // Handle PDF link - you'll need to replace this with the actual PDF path
+        document.getElementById('pdfLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Replace 'restaurant-reservations.pdf' with the actual path to your PDF file
+            const pdfPath = 'RESERVA_QR_TEMATICOS_A4_GENERAL.pdf';
+            window.open(pdfPath, '_blank');
+        });
+
+        // Add touch feedback for better mobile experience
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // You need to save your images with these names in the same folder as the HTML:
+        // 1. The aerial hotel view image as 'hotel-background.jpeg' (for background)
+    </script>
+</body>
+</html>
