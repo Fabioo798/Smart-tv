@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservations - Iberostar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
+            display: block;
+        }
+
+        .logo-wrapper, .qr-wrapper {
+            background: white;
+            border: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .logo-wrapper {
+            width: 300px;
+        }
+
+        .qr-wrapper {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f5f0;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .spanish-text {
+            font-size: 1.8rem;
+            color: #2c5aa0;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .restaurant-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 70px;
+            padding: 40px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .restaurant-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .restaurant-logo {
+            width: 300px;
+            height: auto;
+            object-fit: contain;
+            border: none !important;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .qr-container {
+            width: 150px;
+            height: 150px;
+            border: none;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .qr-container:hover {
+            transform: scale(1.05);
+        }
+
+        .qr-image {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            border: none !important;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .qr-icon {
+            width: 40px;
+            height: 40px;
+            background: #7eb6b2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Touch-friendly for mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .spanish-text {
+                font-size: 1.4rem;
+            }
+
+            .restaurant-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .restaurant-logo {
+                width: 250px;
+            }
+
+            .qr-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .qr-image {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+        .print-styles {
+            display: none;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                padding: 40px;
+                max-width: none;
+            }
+
+            .restaurant-section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Will it be Greek, Mexican or Spanish?</h1>
+            <p>Scan this QR to book your table.</p>
+            
+            <div class="spanish-text">¿Quieres descubrir los sabores de Grecia, México o España?</div>
+            <p>Escanea este QR para reservar tu mesa:</p>
+        </div>
+
+        <div class="restaurant-section">
+            <div class="logo-wrapper">
+                <img src="kyknos.jpeg" alt="Kyknos" class="restaurant-logo">
+            </div>
+            <div class="qr-wrapper">
+                <img src="kyknos-qr.jpeg" alt="Kyknos QR Code" class="qr-image">
+            </div>
+        </div>
+
+        <div class="restaurant-section">
+            <div class="logo-wrapper">
+                <img src="nopal.jpeg" alt="Nopal" class="restaurant-logo">
+            </div>
+            <div class="qr-wrapper">
+                <img src="nopal-qr.jpeg" alt="Nopal QR Code" class="qr-image">
+            </div>
+        </div>
+
+        <div class="restaurant-section">
+            <div class="logo-wrapper">
+                <img src="martinete.jpeg" alt="Martinete" class="restaurant-logo">
+            </div>
+            <div class="qr-wrapper">
+                <img src="martinete-qr.jpeg" alt="Martinete QR Code" class="qr-image">
+            </div>
+        </div>
+
+        <div class="restaurant-section">
+            <div class="logo-wrapper">
+                <img src="tamarindos.jpeg" alt="Tamarindos" class="restaurant-logo">
+            </div>
+            <div class="qr-wrapper">
+                <img src="tamarindos-qr.jpeg" alt="Tamarindos QR Code" class="qr-image">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script for any additional functionality if needed
+        console.log('Iberostar Restaurant Information Page Loaded');
+    </script>
+</body>
+</html>
